@@ -1,0 +1,559 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.login-page {
+  min-height: 100vh;
+
+  background: linear-gradient(
+    135deg,
+    #38bdf8,
+    #0891b2
+  );
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 30px;
+}
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.login-container {
+  width: 950px;
+
+  max-width: 100%;
+
+  min-height: 600px;
+
+  display: flex;
+
+  background: white;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 20px 60px
+    rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   LEFT SECTION
+========================================= */
+
+.welcome-section {
+  width: 42%;
+
+  background: linear-gradient(
+    160deg,
+    #075985,
+    #0891b2
+  );
+
+  color: white;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 50px;
+}
+
+.welcome-section > div {
+  width: 100%;
+}
+
+.drdo-logo {
+  font-size: 58px;
+
+  font-weight: bold;
+
+  letter-spacing: 4px;
+
+  margin-bottom: 20px;
+}
+
+.welcome-section h2 {
+  font-size: 28px;
+
+  line-height: 1.3;
+
+  margin-bottom: 15px;
+}
+
+.welcome-section p {
+  font-size: 15px;
+
+  opacity: 0.9;
+
+  line-height: 1.6;
+}
+
+.welcome-line {
+  width: 70px;
+
+  height: 3px;
+
+  background: white;
+
+  margin: 25px auto;
+}
+
+.welcome-section span {
+  display: block;
+
+  font-size: 13px;
+
+  opacity: 0.85;
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   RIGHT LOGIN CARD
+========================================= */
+
+.login-card {
+  width: 58%;
+
+  padding: 40px 45px;
+
+  background: white;
+}
+
+/* =========================================
+   TABS
+========================================= */
+
+.tabs {
+  display: flex;
+
+  width: 100%;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  margin-bottom: 30px;
+}
+
+.tab {
+  flex: 1;
+
+  height: 45px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #6b7280;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  border-bottom: 3px solid transparent;
+}
+
+.tab:hover {
+  color: #0891b2;
+}
+
+.tab.active {
+  color: #0891b2;
+
+  border-bottom: 3px solid #0891b2;
+}
+
+/* =========================================
+   FORM HEADING
+========================================= */
+
+.form-heading {
+  margin-bottom: 25px;
+}
+
+.form-heading h1 {
+  color: #0a2540;
+
+  font-size: 28px;
+
+  margin-bottom: 8px;
+}
+
+.form-heading p {
+  color: #6b7280;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   INPUT GROUP
+========================================= */
+
+.input-group {
+  width: 100%;
+
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+
+  color: #0a2540;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  margin-bottom: 7px;
+}
+
+.input-group > input {
+  display: block;
+
+  width: 100%;
+
+  height: 46px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  padding: 0 13px;
+
+  font-size: 14px;
+
+  color: #111827;
+
+  background: white;
+
+  outline: none;
+}
+
+.input-group > input:focus {
+  border-color: #0891b2;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(8, 145, 178, 0.1);
+}
+
+.input-group > input::placeholder {
+  color: #9ca3af;
+}
+
+/* =========================================
+   PASSWORD
+========================================= */
+
+.password-box {
+  width: 100%;
+
+  height: 46px;
+
+  display: flex;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  background: white;
+
+  overflow: hidden;
+}
+
+.password-box:focus-within {
+  border-color: #0891b2;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(8, 145, 178, 0.1);
+}
+
+.password-box input {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100%;
+
+  border: none;
+
+  outline: none;
+
+  padding: 0 13px;
+
+  font-size: 14px;
+
+  color: #111827;
+
+  background: white;
+}
+
+.password-box input::placeholder {
+  color: #9ca3af;
+}
+
+.show-password {
+  flex-shrink: 0;
+
+  width: 65px;
+
+  height: 100%;
+
+  border: none;
+
+  background: white;
+
+  color: #0891b2;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.show-password:hover {
+  background: #f0f9ff;
+}
+
+/* =========================================
+   TWO COLUMN SIGNUP
+========================================= */
+
+.two-column {
+  display: flex;
+
+  gap: 15px;
+
+  width: 100%;
+}
+
+.two-column .input-group {
+  flex: 1;
+
+  min-width: 0;
+}
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.login-button {
+  display: block;
+
+  width: 100%;
+
+  height: 47px;
+
+  margin-top: 8px;
+
+  border: none;
+
+  border-radius: 25px;
+
+  background: linear-gradient(
+    90deg,
+    #0052d4,
+    #4364f7,
+    #6fb1fc
+  );
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.login-button:hover {
+  opacity: 0.9;
+}
+
+/* =========================================
+   BOTTOM TEXT
+========================================= */
+
+.bottom-text {
+  text-align: center;
+
+  margin-top: 20px;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+.link-button {
+  border: none;
+
+  background: transparent;
+
+  color: #007bff;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  margin-left: 5px;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   ADMIN INFO
+========================================= */
+
+.admin-info {
+  background: #f0f9ff;
+
+  border: 1px solid #bae6fd;
+
+  border-radius: 10px;
+
+  padding: 14px;
+
+  margin-bottom: 22px;
+
+  text-align: center;
+}
+
+.admin-icon {
+  font-size: 25px;
+
+  margin-bottom: 5px;
+}
+
+.admin-info p {
+  color: #075985;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+
+  .login-container {
+    width: 700px;
+  }
+
+  .welcome-section {
+    width: 35%;
+
+    padding: 30px;
+  }
+
+  .login-card {
+    width: 65%;
+
+    padding: 35px;
+  }
+
+  .drdo-logo {
+    font-size: 45px;
+  }
+
+  .welcome-section h2 {
+    font-size: 22px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+  .login-page {
+    padding: 15px;
+  }
+
+  .login-container {
+    width: 100%;
+
+    flex-direction: column;
+
+    min-height: auto;
+  }
+
+  .welcome-section {
+    width: 100%;
+
+    padding: 30px 20px;
+  }
+
+  .welcome-section h2 {
+    font-size: 22px;
+  }
+
+  .drdo-logo {
+    font-size: 42px;
+  }
+
+  .login-card {
+    width: 100%;
+
+    padding: 30px 25px;
+  }
+
+  .two-column {
+    flex-direction: column;
+
+    gap: 0;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+  .login-card {
+    padding: 25px 18px;
+  }
+
+  .tab {
+    font-size: 12px;
+  }
+
+  .form-heading h1 {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,475 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.asset-page {
+    min-height: 100vh;
+    background: linear-gradient(
+            180deg,
+            #38bdf8 0%,
+            #0891b2 100%
+    );
+    padding-bottom: 40px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.top-header {
+    width: 100%;
+    height: 70px;
+    padding: 0 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================
+   DRDO LOGO
+========================================= */
+
+.drdo-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo-circle {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile-container {
+    position: relative;
+}
+
+.profile-button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid white;
+    border-radius: 50%;
+    background: transparent;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.profile-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.profile-menu {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    width: 150px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 100;
+}
+
+.profile-menu-item {
+    display: block;
+    padding: 12px 15px;
+    color: #334155;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.profile-menu-item:hover {
+    background: #f1f5f9;
+}
+
+.profile-menu-item.logout {
+    color: #dc2626;
+    border-top: 1px solid #e5e7eb;
+}
+
+
+/* =========================================
+   PAGE CONTENT
+========================================= */
+
+.page-content {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-content h1 {
+    margin: 0 0 20px;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.form-card {
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 25px;
+    padding: 9px 15px;
+    background: #e0f2fe;
+    color: #0284c7;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.back-button:hover {
+    background: #0284c7;
+    color: white;
+}
+
+
+/* =========================================
+   FORM - Updated to 3 columns
+========================================= */
+
+.asset-form {
+    display: grid;
+    /* Changed from 1fr 1fr to 3 equal columns */
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 22px;
+    row-gap: 18px;
+}
+
+
+/* =========================================
+   FIELD
+========================================= */
+
+.field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width {
+    /* Span all 3 columns */
+    grid-column: 1 / 4;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.field label span {
+    margin-left: 3px;
+    color: #ef4444;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: white;
+    color: #1e293b;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    outline: none;
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   INPUT / SELECT
+========================================= */
+
+.field input,
+.field select {
+    height: 42px;
+    padding: 0 12px;
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+.field textarea {
+    min-height: 90px;
+    padding: 10px 12px;
+    resize: vertical;
+}
+
+
+/* =========================================
+   FOCUS
+========================================= */
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: #0891b2;
+    outline: 2px solid rgba(8, 145, 178, 0.15);
+}
+
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: #94a3b8;
+}
+
+
+/* =========================================
+   DISABLED
+========================================= */
+
+.field input:disabled,
+.field select:disabled {
+    background: #e5e7eb;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   READONLY
+========================================= */
+
+.field input[readonly] {
+    background: #e5e7eb;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.field input.error,
+.field select.error,
+.field textarea.error {
+    border-color: #ef4444;
+    background: #fff7f7;
+}
+
+
+/* =========================================
+   SMALL WARNING
+========================================= */
+
+.field small {
+    margin-top: 5px;
+    color: #dc2626;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   FORM WARNING
+========================================= */
+
+.form-warning {
+    margin-top: 20px;
+    padding: 10px 12px;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    background: #fef2f2;
+    color: #dc2626;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+
+/* =========================================
+   CANCEL
+========================================= */
+
+.cancel-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 20px;
+    background: #f1f5f9;
+    color: #475569;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cancel-button:hover {
+    background: #e2e8f0;
+}
+
+
+/* =========================================
+   SAVE
+========================================= */
+
+.save-button {
+    height: 40px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 6px;
+    background: #238b43;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background: #1e7538;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN (Tablets / Laptops)
+========================================= */
+
+@media (max-width: 900px) {
+    .asset-form {
+        grid-template-columns: 1fr 1fr;
+    }
+    .full-width {
+        grid-column: 1 / 3;
+    }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 750px) {
+    .asset-form {
+        grid-template-columns: 1fr;
+    }
+    .full-width {
+        grid-column: auto;
+    }
+    .page-content {
+        padding: 15px;
+    }
+    .form-card {
+        padding: 20px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+    .top-header {
+        padding: 0 15px;
+    }
+    .drdo-logo {
+        font-size: 19px;
+    }
+    .page-content h1 {
+        font-size: 23px;
+    }
+    .form-card {
+        padding: 15px;
+    }
+    .form-buttons {
+        flex-direction: column;
+    }
+    .cancel-button,
+    .save-button {
+        width: 100%;
+    }
+}
