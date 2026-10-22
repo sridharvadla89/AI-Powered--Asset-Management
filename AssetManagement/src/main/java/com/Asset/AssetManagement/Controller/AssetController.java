@@ -10,6 +10,10 @@ import com.Asset.AssetManagement.Service.ExportService;
 import com.Asset.AssetManagement.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +23,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Set;
 
-    @RestController
+@RestController
     @RequestMapping({"/auth"})
     @CrossOrigin(
             origins = {"http://localhost:5173"}
@@ -108,25 +113,109 @@ import java.util.List;
             return ResponseEntity.status(HttpStatus.OK).body(excel);
         }
 
-        @GetMapping({"/export"})
-        public ResponseEntity<InputStreamResource> exportData(@RequestParam(required = false) String field, @RequestParam(required = false) String value, @RequestParam String format) throws Exception {
-            List data;
-            if (field != null && !field.isEmpty() && value != null && !value.isEmpty()) {
-                data = this.repository.findAll(AssetSpecification.hasFieldWithValue(field, value));
-            } else {
-                data = this.repository.findAll();
+
+        @GetMapping("/export")
+        public ResponseEntity<InputStreamResource> exportData(
+                @RequestParam(required = false) String field,
+                @RequestParam(required = false) String value,
+                @RequestParam String format,
+                @RequestParam(defaultValue = "0") int page,
+                @RequestParam(defaultValue = "10") int size,
+                @RequestParam(defaultValue = "sNo") String sortBy,
+                @RequestParam(defaultValue = "asc") String direction
+        ) throws Exception {
+
+            // 1. Validate pagination parameters
+            if (page < 0 || size < 1 || size > 500) {
+                return ResponseEntity.badRequest().build();
             }
 
+            // 2. Allow only valid entity properties for sorting
+            Set<String> allowedSortFields = Set.of(
+                    "sNo",
+                    "pcUser",
+                    "pcAssignTo",
+                    "pcName",
+                    "ipAddress",
+                    "assetNo",
+                    "purchaseYear"
+            );
+
+            if (!allowedSortFields.contains(sortBy)) {
+                return ResponseEntity.badRequest().build();
+            }
+
+            // 3. Validate sort direction
+            Sort.Direction sortDirection;
+
+            try {
+                sortDirection = Sort.Direction.fromString(direction);
+            } catch (IllegalArgumentException ex) {
+                return ResponseEntity.badRequest().build();
+            }
+
+            // 4. Create pagination and sorting configuration
+            Pageable pageable = PageRequest.of(
+                    page,
+                    size,
+                    Sort.by(sortDirection, sortBy)
+            );
+
+            // 5. Fetch filtered, sorted, paginated records
+            Page<Assets> assetPage;
+
+            if (field != null && !field.isBlank()
+                    && value != null && !value.isBlank()) {
+
+                assetPage = repository.findAll(
+                        AssetSpecification.hasFieldWithValue(field, value),
+                        pageable
+                );
+
+            } else {
+                assetPage = repository.findAll(pageable);
+            }
+
+            // 6. Get only the current page's records
+            List<Assets> data = assetPage.getContent();
+
+            // 7. Generate the requested file
             InputStreamResource file;
+
             if ("excel".equalsIgnoreCase(format)) {
-                file = new InputStreamResource(this.exportService.exportToExcel(data));
-                return ((ResponseEntity.BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=DRDO_data.xlsx"})).contentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")).body(file);
+
+                file = new InputStreamResource(
+                        exportService.exportToExcel(data)
+                );
+
+                return ResponseEntity.ok()
+                        .header(
+                                "Content-Disposition",
+                                "attachment; filename=DRDO_data.xlsx"
+                        )
+                        .contentType(MediaType.parseMediaType(
+                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                        ))
+                        .body(file);
+
             } else if ("pdf".equalsIgnoreCase(format)) {
-                file = new InputStreamResource(this.exportService.exportToPdf(data));
-                return ((ResponseEntity.BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=DRDO_data.pdf"})).contentType(MediaType.APPLICATION_PDF).body(file);
+
+                file = new InputStreamResource(
+                        exportService.exportToPdf(data)
+                );
+
+                return ResponseEntity.ok()
+                        .header(
+                                "Content-Disposition",
+                                "attachment; filename=DRDO_data.pdf"
+                        )
+                        .contentType(MediaType.APPLICATION_PDF)
+                        .body(file);
+
             } else {
                 return ResponseEntity.badRequest().build();
             }
         }
+
     }
 

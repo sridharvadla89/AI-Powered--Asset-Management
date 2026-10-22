@@ -1,0 +1,493 @@
+
+/* ==========================================
+   DRDO ASSET MANAGEMENT
+   Charcoal + Emerald + Warm White Theme
+========================================== */
+
+:root {
+    --primary: #176b50;
+    --primary-hover: #10543e;
+    --primary-light: #e6f3ed;
+    --page-bg: #f5f6f2;
+    --card-bg: #ffffff;
+    --table-head: #edf2ed;
+    --text: #252d29;
+    --muted: #66736b;
+    --border: #dce3dc;
+    --input-border: #c9d3ca;
+    --danger: #b42318;
+    --shadow: 0 4px 16px rgba(35, 49, 40, 0.06);
+    --radius: 10px;
+  }
+  
+  /* Global reset */
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+  
+  /* Main container */
+  
+  .asset-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 28px;
+    background: var(--page-bg);
+  }
+  
+  /* Toolbar */
+  
+  .toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  
+  /* Search row */
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    flex: 1 1 500px;
+    gap: 10px;
+    min-width: 0;
+  }
+  
+  .search-bar select,
+  .search-bar .input-tab {
+    flex: 0 0 175px;
+    width: 175px;
+    height: 44px;
+    padding: 0 12px;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid var(--input-border);
+    border-radius: 7px;
+    outline: none;
+  }
+  
+  .search-bar input {
+    flex: 1 1 220px;
+    width: 100%;
+    min-width: 100px;
+    height: 44px;
+    padding: 0 14px;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid var(--input-border);
+    border-radius: 7px;
+    outline: none;
+  }
+  
+  .search-bar input::placeholder {
+    color: #818b83;
+  }
+  
+  .search-bar input:focus,
+  .search-bar select:focus,
+  .search-bar .input-tab:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(23, 107, 80, 0.12);
+  }
+  
+  /* Style the Search button.
+     Works if it is inside .search-bar. */
+  
+  .search-bar button {
+    flex: 0 0 auto;
+    height: 44px;
+    padding: 0 19px;
+    color: #fff;
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 7px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .search-bar button:hover {
+    background: var(--primary-hover);
+  }
+  
+  /* Export buttons */
+  
+  .export-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+  }
+  
+  .export-buttons button {
+    min-height: 44px;
+    padding: 0 17px;
+    color: #fff;
+    background: #303b35;
+    border: 1px solid #303b35;
+    border-radius: 7px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  
+  .export-buttons button:hover {
+    background: #1f2923;
+    transform: translateY(-1px);
+  }
+  
+  /* Keyboard focus */
+  
+  .asset-container button:focus-visible {
+    outline: 3px solid rgba(23, 107, 80, 0.25);
+    outline-offset: 2px;
+  }
+  
+  /* Column navigation */
+  
+  .columns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 54px;
+    padding: 10px;
+    margin-bottom: 0;
+    overflow-x: auto;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  
+  /* Navigation buttons and column tabs */
+  
+  .columns button {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    color: var(--primary);
+    background: var(--primary-light);
+    border: 1px solid #c8e0d3;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .columns button:hover {
+    color: #fff;
+    background: var(--primary);
+  }
+  
+  .tab-item {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 14px;
+    color: #46534a;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .tab-item:hover {
+    color: var(--primary);
+    background: var(--primary-light);
+    border-color: #b7d5c4;
+  }
+  
+  /* Table wrapper */
+  
+  .table-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+    margin: 0 0 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 0;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+  }
+  
+  /* Table */
+  
+  .table-container table {
+    width: 100%;
+    min-width: 1500px;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+    font-size: 13px;
+  }
+  
+  /* Header */
+  
+  .table-container thead {
+    background: var(--table-head);
+  }
+  
+  .table-container th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 15px 16px;
+    color: #304b3b;
+    background: var(--table-head);
+    border-bottom: 2px solid #d3dfd4;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+  
+  /* Data cells */
+  
+  .table-container td {
+    padding: 14px 16px;
+    color: #424d45;
+    background: #fff;
+    border-bottom: 1px solid #e9eee8;
+    white-space: nowrap;
+  }
+  
+  .table-container tbody tr:nth-child(even) td {
+    background: #f9faf7;
+  }
+  
+  .table-container tbody tr:hover td {
+    background: #edf6ef;
+  }
+  
+  .table-container tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* Status messages */
+  
+  .asset-container .empty-state,
+  .asset-container .loading-message,
+  .asset-container .error-message {
+    padding: 26px 18px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .asset-container .empty-state,
+  .asset-container .loading-message {
+    color: var(--muted);
+  }
+  
+  .asset-container .error-message {
+    color: var(--danger);
+    background: #fff7f6;
+  }
+  
+  /* Pagination panel */
+  
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+    padding: 18px 22px;
+    margin-top: 0;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  
+  /* Rows per page */
+  
+  .page-size {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  
+  .page-size select {
+    min-width: 70px;
+    height: 38px;
+    padding: 0 10px;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid var(--input-border);
+    border-radius: 7px;
+    outline: none;
+  }
+  
+  .page-size select:focus {
+    border-color: var(--primary);
+  }
+  
+  /* Pagination buttons */
+  
+  .page-buttons {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  
+  .page-buttons button {
+    min-width: 78px;
+    height: 38px;
+    padding: 0 13px;
+    color: var(--primary);
+    background: #fff;
+    border: 1px solid #b9cbbf;
+    border-radius: 7px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .page-buttons button:hover:not(:disabled) {
+    color: #fff;
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  .page-buttons button:disabled {
+    color: #9ba49c;
+    background: #f2f4f1;
+    border-color: #e0e5df;
+    cursor: not-allowed;
+  }
+  
+  /* General disabled state */
+  
+  .asset-container button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  /* Scrollbars */
+  
+  .table-container::-webkit-scrollbar,
+  .columns::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  
+  .table-container::-webkit-scrollbar-track,
+  .columns::-webkit-scrollbar-track {
+    background: #f0f2ed;
+  }
+  
+  .table-container::-webkit-scrollbar-thumb,
+  .columns::-webkit-scrollbar-thumb {
+    background: #b6c2b7;
+    border-radius: 8px;
+  }
+  
+  .table-container::-webkit-scrollbar-thumb:hover,
+  .columns::-webkit-scrollbar-thumb:hover {
+    background: #87998b;
+  }
+  
+  /* Tablet */
+  
+  @media (max-width: 1000px) {
+    .asset-container {
+      padding: 18px;
+    }
+  
+    .toolbar {
+      padding: 16px;
+    }
+  
+    .search-bar {
+      flex-basis: 100%;
+    }
+  
+    .export-buttons {
+      width: 100%;
+    }
+  
+    .export-buttons button {
+      flex: 1;
+    }
+  }
+  
+  /* Mobile */
+  
+  @media (max-width: 600px) {
+    .asset-container {
+      padding: 12px;
+    }
+  
+    .toolbar {
+      padding: 13px;
+      gap: 12px;
+    }
+  
+    .search-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      gap: 9px;
+    }
+  
+    .search-bar select,
+    .search-bar .input-tab,
+    .search-bar input,
+    .search-bar button {
+      flex: none;
+      width: 100%;
+      min-width: 0;
+    }
+  
+    .export-buttons {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .export-buttons button {
+      width: 100%;
+    }
+  
+    .pagination {
+      align-items: flex-start;
+      padding: 14px;
+    }
+  
+    .page-buttons {
+      flex-wrap: wrap;
+    }
+  }
+  

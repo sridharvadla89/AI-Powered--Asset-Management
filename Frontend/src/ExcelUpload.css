@@ -1,0 +1,155 @@
+/* Container to center the card */
+.upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+/* The main upload card */
+.upload-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    border: 1px solid #eaeaea;
+}
+
+/* Header typography */
+.upload-header h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: #111827;
+    font-weight: 600;
+}
+
+.upload-header p {
+    margin: 0 0 2rem 0;
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* The clickable drag-and-drop area */
+.file-dropzone {
+    display: block;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+    margin-bottom: 1.5rem;
+}
+
+.file-dropzone:hover {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+}
+
+/* Hides the default ugly file input but keeps it functional */
+.hidden-file-input {
+    display: none;
+}
+
+.dropzone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* The cloud icon */
+.upload-icon {
+    width: 48px;
+    height: 48px;
+    color: #94a3b8;
+}
+
+.file-dropzone:hover .upload-icon {
+    color: #3b82f6;
+}
+
+/* Text inside the dropzone */
+.file-placeholder {
+    color: #64748b;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.file-name {
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 1rem;
+    word-break: break-all;
+}
+
+/* The Upload Button */
+.upload-btn {
+    width: 100%;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.875rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.upload-btn:hover:not(:disabled) {
+    background-color: #1d4ed8;
+}
+
+.upload-btn:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+}
+
+/* Success and Error Message Banners */
+.message-banner {
+    padding: 0.875rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.message-banner.success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #34d399;
+}
+
+.message-banner.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #f87171;
+}
+
+/* CSS Loading Spinner */
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ffffff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -8,8 +8,9 @@ import "./App.css";
 import DeleteAssetRecord from "./DeleteAssetRecord";
 import AdminDashboard from "./AdminDashboard";
 import AddAssetRecord from "./AddAssetRecord";
+import ExcelUpload from "./Excelupload";
 
-
+import Form from "./Form";
 function PagePlaceholder({ title }) {
 
   return (
@@ -143,8 +144,10 @@ function App() {
           />
         }
       />
+      <Route path="/form"element={<Form/>}/>
       <Route path="/AdminDashboard"
       element={<AdminDashboard/>}/>
+      <Route path="/Excel" element={<ExcelUpload/>}/>
     </Routes>
 
   );
